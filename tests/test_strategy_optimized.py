@@ -78,14 +78,14 @@ class TestStrategy(bt.Strategy):
 
     def start(self):
         self.broker.setcommission(commission=2.0, mult=10.0, margin=1000.0)
-        self.tstart = time.clock()
+        self.tstart = time.process_time()
         self.buy_create_idx = itertools.count()
 
     def stop(self):
         global _chkvalues
         global _chkcash
 
-        tused = time.clock() - self.tstart
+        tused = time.process_time() - self.tstart
         if self.p.printdata:
             self.log(('Time used: %s  - Period % d - '
                       'Start value: %.2f - End value: %.2f') %

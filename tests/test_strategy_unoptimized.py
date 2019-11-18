@@ -107,7 +107,7 @@ class TestStrategy(bt.Strategy):
             self.log('Starting portfolio value: %.2f' % self.broker.getvalue(),
                      nodate=True)
 
-        self.tstart = time.clock()
+        self.tstart = time.process_time()
 
         self.buycreate = list()
         self.sellcreate = list()
@@ -115,7 +115,7 @@ class TestStrategy(bt.Strategy):
         self.sellexec = list()
 
     def stop(self):
-        tused = time.clock() - self.tstart
+        tused = time.process_time() - self.tstart
         if self.p.printdata:
             self.log('Time used: %s' % str(tused))
             self.log('Final portfolio value: %.2f' % self.broker.getvalue())
