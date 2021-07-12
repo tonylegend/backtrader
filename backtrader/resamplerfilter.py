@@ -383,7 +383,7 @@ class _BaseResampler(with_metaclass(metabase.MetaParams, object)):
         return False, True  # subweeks, not subdays and not sessionend
 
     def _calcadjtime(self, greater=False):
-        if self._nexteos is None:
+        if self._nexteos is None and not self.componly:
             # Session has been exceeded - end of session is the mark
             return self._lastdteos  # utc-like
 
